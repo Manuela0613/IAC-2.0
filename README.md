@@ -1,64 +1,295 @@
-# IAC
-Proyecto para Codigo Limpio
 
-Con este proyecto se busca desarrollar un sistema que optimice la gestión de la empresa IAC, ya que actualmente su base de datos se administra mediante Microsoft Office. Aunque es una herramienta sólida y funcional, su interfaz puede resultar poco intuitiva para usuarios no expertos, lo que dificulta la eficiencia en los procesos diarios.
+# IAC API 🚀  
+Sistema de Gestión Empresarial con FastAPI y Supabase
 
-Esta propuesta tiene como objetivo modernizar y mejorar la gestión interna de la empresa, implementando un sistema más ágil, intuitivo y eficiente, que facilite el trabajo de los usuarios y optimice los procesos administrativos.
+## 📌 Descripción del Proyecto
 
-# 🚀 Características
+IAC API es un sistema backend desarrollado para optimizar la gestión interna de la empresa IAC.  
+El proyecto nace como solución a las limitaciones del manejo manual de información mediante herramientas ofimáticas tradicionales como Microsoft Office, buscando ofrecer una plataforma más moderna, escalable y eficiente.
 
-- ### *Arquitectura Modular:*
-División clara entre modelos de datos, lógica de negocio, almacenamiento y excepciones.
-- ### *Persistencia JSON:*
-Implementaremos un sistema de guardadp y carga de datos local mediante archivos tipo *.json.*
+El sistema permite administrar:
 
-- ### *Manejo de Errores:*
-Usaremos jerarquia de excepciones para hayar errores especificos como *ids duplicados,stock insuficiente, empresa no encontrada, entre otros...*
-- ### *Tipado Estático:*
-Usamos *dataclasses* y *typing* para hacer el código más legible y menos propenso a errores.
+- Empresas
+- Productos
+- Servicios
 
-# 🚀 Funcionalidades Principales
-El sistema permite realizar las siguientes operaciones a través de una interfaz de línea de comandos (CLI):
+a través de una API REST construida con **FastAPI**, utilizando **Supabase** como sistema de persistencia de datos.
 
-- ### Gestión de Empresas: 
-Agregar nuevas empresas al sistema.
+---
 
-- ### Gestión de Catálogo: 
-Registrar, modificar y eliminar servicios y productos asociados a cada empresa.
+# 🚀 Tecnologías Utilizadas
 
+- **Python 3**
+- **FastAPI**
+- **Supabase**
+- **Pydantic**
+- **Pytest**
+- **Uvicorn**
+- **UV Package Manager**
+- **Git & GitHub**
 
-- ### Visualización: 
-Listar todas las empresas registradas junto con sus respectivos servicios, productos o ventas realizadas.
+---
 
+# 🧱 Arquitectura del Proyecto
 
-- ### Persistencia Local: 
-Almacenamiento de información en archivos de formato JSON, sin depender de sistemas de bases de datos externos.
+El proyecto sigue una arquitectura por capas para mantener una separación clara de responsabilidades y facilitar el mantenimiento del código.
 
-# 📁 Estructura de Capas del Código
-
-| Capa | Archivo | Responsabilidad Principal |
-| :--- | :--- | :--- |
-| **Models** | `models.py` | [cite_start]Define las entidades `Company`, `Product` y `Service` con tipado estático[cite: 1, 12]. |
-| **Storage** | `storage.py` | [cite_start]Gestiona la persistencia de datos y la interfaz de lectura/escritura de archivos **JSON**[cite: 9, 12]. |
-| **Services** | `services.py` | [cite_start]Contiene la lógica de negocio, validaciones y reglas de gestión empresarial[cite: 11, 12]. |
-| **Exceptions** | `exceptions.py` | [cite_start]Define errores personalizados para un manejo adecuado de excepciones[cite: 16]. |
-| **CLI** | `main.py` | [cite_start]Interfaz de línea de comandos para la interacción con el usuario desde la terminal[cite: 12, 14]. |
-
-# 🛠️ Detalles Técnicos y Alcance
-Orientamos el proyecto a fines académicos, para demuestrar la implementación de buenas prácticas de desarrollo en Python:
+```plaintext
+src/
+│
+├── api/            # Endpoints y routers FastAPI
+├── core/           # Configuración, excepciones y utilidades
+├── schemas/        # Modelos Pydantic
+├── services/       # Lógica de negocio
+├── storage/        # Acceso a datos y Supabase
+├── tests/          # Tests unitarios e integración
+```
 
 
-- ### Tipado Estático: 
-Usamos *typing* y *dataclasses* para mayor solidez.
 
+# ✨ Características Principales
 
-- ### Manejo de Excepciones: 
-Sistema personalizado de errores (ej. CompanyNotFoundError, DuplicateCompanyError).
+## ✅ API REST con FastAPI
 
+El sistema expone endpoints RESTful para administrar empresas, productos y servicios.
 
-- ### Interfaz:
-Interacción exclusiva mediante la terminal (CLI), sin interfaz gráfica.
+---
 
+## ✅ Persistencia con Supabase
 
-- ### Pruebas: 
-Estructura preparada para la implementación de pruebas unitarias
+Toda la información se almacena en una base de datos PostgreSQL administrada mediante Supabase.
+
+---
+
+## ✅ Arquitectura Modular
+
+Separación clara entre:
+
+- Routers
+- Schemas
+- Services
+- Repositories
+- Configuración
+- Manejo de errores
+
+---
+
+## ✅ Validación de Datos
+
+Uso de **Pydantic** para validar automáticamente:
+
+- tipos de datos
+- campos requeridos
+- estructuras JSON
+
+---
+
+## ✅ Soft Delete
+
+Los registros no se eliminan físicamente de la base de datos.  
+El sistema utiliza el campo:
+
+```plaintext
+is_active
+```
+
+para desactivar registros de forma segura.
+
+---
+
+## ✅ Manejo Centralizado de Errores
+
+El proyecto implementa excepciones personalizadas para manejar errores de forma uniforme y clara.
+
+Ejemplos:
+
+- Company not found
+- Product not found
+- Service not found
+- Storage errors
+- Validation errors
+
+---
+
+## ✅ Testing
+
+Se implementaron:
+
+- Tests unitarios
+- Tests de integración
+
+utilizando **Pytest**.
+
+---
+
+# 📡 Endpoints Principales
+
+## 🏢 Companies
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/companies/` | Listar empresas |
+| GET | `/companies/{id}` | Obtener empresa por ID |
+| POST | `/companies/` | Crear empresa |
+| PATCH | `/companies/{id}` | Actualizar empresa |
+| DELETE | `/companies/{id}` | Soft delete empresa |
+
+---
+
+## 📦 Products
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/products/` | Listar productos |
+| GET | `/products/{id}` | Obtener producto |
+| POST | `/products/` | Crear producto |
+| PATCH | `/products/{id}` | Actualizar producto |
+| DELETE | `/products/{id}` | Soft delete producto |
+
+---
+
+## 🛠️ Services
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/services/` | Listar servicios |
+| GET | `/services/{id}` | Obtener servicio |
+| POST | `/services/` | Crear servicio |
+| PATCH | `/services/{id}` | Actualizar servicio |
+| DELETE | `/services/{id}` | Soft delete servicio |
+
+---
+
+# 📖 Documentación Swagger
+
+FastAPI genera automáticamente documentación interactiva.
+
+Disponible en:
+
+```plaintext
+http://127.0.0.1:8000/docs
+```
+
+Desde Swagger es posible:
+
+- probar endpoints
+- enviar requests
+- visualizar respuestas
+- validar esquemas
+
+---
+
+# ⚙️ Instalación y Ejecución
+
+## 1️⃣ Clonar el repositorio
+
+```bash
+git clone <URL_DEL_REPOSITORIO>
+```
+
+---
+
+## 2️⃣ Entrar al proyecto
+
+```bash
+cd IAC-2.0
+```
+
+---
+
+## 3️⃣ Instalar dependencias
+
+```bash
+uv sync
+```
+
+---
+
+## 4️⃣ Activar entorno virtual
+
+### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+### Mac/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## 5️⃣ Configurar variables de entorno
+
+Crear un archivo:
+
+```plaintext
+.env
+```
+
+Ejemplo:
+
+```env
+SUPABASE_URL=tu_url
+SUPABASE_KEY=tu_key
+API_TITLE=IAC API
+API_VERSION=1.0.0
+```
+
+---
+
+## 6️⃣ Ejecutar el servidor
+
+```bash
+uvicorn src.api.main:app --reload
+```
+
+---
+
+# 🧪 Ejecutar Tests
+
+```bash
+uv run pytest
+```
+
+---
+
+# 📁 Estructura de Testing
+
+```plaintext
+tests/
+│
+├── integration/
+│   └── test_routers.py
+│
+├── unit/
+│   ├── test_company_service.py
+│   ├── test_products_service.py
+│   └── test_services_service.py
+```
+
+---
+
+# 🔒 Buenas Prácticas Implementadas
+
+- Arquitectura limpia
+- Separación de responsabilidades
+- Tipado estático
+- Validaciones automáticas
+- Soft delete
+- Manejo de excepciones
+- Testing automatizado
+- Variables de entorno
+- Modularidad
+- Código mantenible y escalable
+
+---
+
+# 👨‍💻 Objetivo Académico
+
+Este proyecto fue desarrollado con fines académicos para demostrar la implementación de buenas prácticas de desarrollo backend utilizando Python y FastAPI.
+
+Además, busca servir como base para futuros sistemas empresariales más complejos y escalables.
+````
