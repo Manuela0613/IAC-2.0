@@ -8,7 +8,7 @@ from src.storage.base import BaseRepository
 class ServiceRepository(BaseRepository):
     """Acceso a datos para la tabla services."""
 
-    TABLE = "services"
+    TABLE = "service"
 
     # ── Consultas ──────────────────────────────────────────────────────────
 

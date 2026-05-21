@@ -91,3 +91,4 @@ class CompanyResponse(CompanyBase):
     )
 
     model_config = {"from_attributes": True}
+
