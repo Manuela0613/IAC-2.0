@@ -71,7 +71,7 @@ class ProductService:
                 payload.company_id,
             )
 
-        data = payload.model_dump()
+        data = payload.model_dump(mode="json")
 
         data["is_active"] = True
 
