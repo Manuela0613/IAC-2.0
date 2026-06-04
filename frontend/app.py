@@ -127,8 +127,6 @@ width="90">
 </div>
 """, unsafe_allow_html=True)
 
-
-
 st.markdown("""
 <div class="center-text">
 
