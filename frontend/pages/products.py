@@ -124,32 +124,32 @@ if products:
             "Actualizar Producto"
         )
 
-if submit_update:
+    if submit_update:
 
-    try:
+        try:
 
-        data = {
-            "name": new_name,
-            "price": float(new_price),
-            "stock": int(new_stock)
-        }
+            data = {
+                "name": new_name,
+                "price": float(new_price),
+                "stock": int(new_stock)
+            }
 
-        st.write("ID:", product["id"])
-        st.write("DATA:", data)
+            st.write("ID:", product["id"])
+            st.write("DATA:", data)
 
-        result = update_product(
-            product["id"],
-            data
-        )
+            result = update_product(
+                product["id"],
+                data
+            )
 
-        st.write("RESPUESTA:", result)
+            st.write("RESPUESTA:", result)
 
-        st.success(
-            "Producto actualizado correctamente"
-        )
+            st.success(
+                "Producto actualizado correctamente"
+            )
 
-    except Exception as e:
-        st.error(str(e))
+        except Exception as e:
+            st.error(str(e))
 
 # ── Eliminar producto ────────────────────────
 

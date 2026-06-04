@@ -89,7 +89,9 @@ class ProductService:
         if not product:
             raise NotFoundError("Product", product_id)
 
-        data = payload.model_dump(exclude_unset=True)
+        data = payload.model_dump(
+            mode="json",
+            exclude_unset=True)
 
         return self.repository.update(product_id, data)
 

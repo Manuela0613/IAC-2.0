@@ -89,7 +89,9 @@ class ServiceService:
         if not service:
             raise NotFoundError("Service", service_id)
 
-        data = payload.model_dump(exclude_unset=True)
+        data = payload.model_dump(
+            mode="json",
+            exclude_unset=True)
 
         return self.repository.update(service_id, data)
 
