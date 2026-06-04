@@ -102,22 +102,28 @@ with st.sidebar:
 
 
 st.markdown("""
-<div style="text-align:center;">
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+gap:25px;
+margin-bottom:20px;
+">
 
 <img
 src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-width="120">
+width="90">
 
-</div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="main-title">
-IAC 
+<div style="
+font-size:60px;
+">
+IAC
 </div>
 
-<div class="sub-title">
-Sistema de Gestión Empresarial
+<img
+src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png"
+width="90">
+
 </div>
 """, unsafe_allow_html=True)
 
