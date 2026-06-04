@@ -1,13 +1,21 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="IAC ERP",
+    page_title="IAC",
     page_icon="🚀",
     layout="wide"
 )
 
-st.title("🚀 IAC ERP")
+st.title("🚀 Sistema IAC")
 
-st.markdown("""
-Sistema de gestión empresarial conectado a FastAPI.
-""")
+st.write(
+    """
+    Bienvenido al sistema de gestión.
+
+    Utiliza el menú lateral para navegar entre:
+
+    - Empresas
+    - Productos
+    - Servicios
+    """
+)

@@ -48,7 +48,8 @@ class CompanyRepository(BaseRepository):
         return data[0] if data else None
 
     def get_by_nit(self, nit: str) -> dict | None:
-        """Busca empresa por NIT."""
+        print("BUSCANDO NIT:", nit)
+        print("SUPABASE URL:", self.client.supabase_url if hasattr(self.client, "supabase_url") else "N/A")
 
         response = self._execute(
             "company.get_by_nit",

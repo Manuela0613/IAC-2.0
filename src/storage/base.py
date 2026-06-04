@@ -19,9 +19,13 @@ T = TypeVar("T")
 
 
 class BaseRepository:
-    """Clase base que heredarán todos los repositories."""
-
     def __init__(self) -> None:
+
+        print("================================")
+        print("SUPABASE_URL =", settings.supabase_url)
+        print("SUPABASE_KEY =", settings.supabase_key[:20])
+        print("================================")
+
         self.client: Client = create_client(
             settings.supabase_url,
             settings.supabase_key,
