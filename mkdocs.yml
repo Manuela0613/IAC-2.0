@@ -1,0 +1,52 @@
+site_name: IAC Documentation
+site_description: Sistema de Gestión Empresarial con FastAPI, Supabase y Streamlit
+site_author: Mateo Carvajal Zapata, Manuela Martínez Gil
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: blue
+
+plugins:
+  - search
+
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["src"]
+          options:
+            show_source: true
+            show_root_heading: true
+
+nav:
+
+  - Inicio: index.md
+
+  - Proyecto:
+      - README: readme.md
+      - Instalación: getting-started.md
+
+  - Arquitectura:
+      - Arquitectura General: architecture.md
+      - Base de Datos: database.md
+
+  - Backend:
+      - FastAPI y Endpoints: api.md
+      - Schemas Pydantic: schemas.md
+      - Services y Repositories: services.md
+
+  - Frontend:
+      - Streamlit: frontend.md
+
+  - Calidad:
+      - Testing: testing.md
+      - Ruff y Radon: quality.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.inlinehilite

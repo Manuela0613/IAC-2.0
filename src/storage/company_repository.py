@@ -1,10 +1,6 @@
 """
 Repositorio de empresas.
 
-Esta capa:
-- SOLO habla con Supabase.
-- nO contiene lógica de negocio.
-- SOLO hace operaciones CRUD.
 """
 
 from src.storage.base import BaseRepository
@@ -94,7 +90,6 @@ class CompanyRepository(BaseRepository):
     def delete(self, company_id: int) -> bool:
         """
         Soft delete:
-        nO elimina realmente la empresa.
         """
 
         response = self._execute(

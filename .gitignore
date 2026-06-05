@@ -192,5 +192,17 @@ pyrightconfig.json
 .history
 .ionide
 
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+
+# Virtual env
+.venv/
+
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python
+
 
