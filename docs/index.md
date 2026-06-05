@@ -1,4 +1,4 @@
-# IAC ERP
+# IAC
 
 Sistema de Gestión Empresarial desarrollado con:
 

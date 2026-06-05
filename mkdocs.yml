@@ -34,15 +34,12 @@ nav:
 
   - Backend:
       - FastAPI y Endpoints: api.md
-      - Schemas Pydantic: schemas.md
-      - Services y Repositories: services.md
 
   - Frontend:
       - Streamlit: frontend.md
 
   - Calidad:
       - Testing: testing.md
-      - Ruff y Radon: quality.md
 
 markdown_extensions:
   - admonition
